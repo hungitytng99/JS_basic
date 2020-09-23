@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="dropdown">
+
+        <button id="btn-select-num-people" onclick="showOption()">
+            <h3 class="num-people-total">
+                <p class="total-people ">1</p>
+                <p>khách</p>
+            </h3>
+            <div class="row">
+                <p class="num-aldult">1</p>
+                <p> người lớn,</p>
+                <p class="num-kids">0</p>
+                <p> trẻ em,</p>
+                <p class="num-baby">0</p>
+                <p> em bé</p>
+            </div>
+
+        </button>
+
+        <div id="dropdown-id" class="dropdown-content">
+            <table id="num_people_regis">
+                <tr>
+                    <td>
+                        <p class="num-aldult">1</p>
+                    </td>
+                    <td width="60%">
+                        <div>Người lớn</div>
+                        <div class="text-detail-people">(Từ 12 tuổi)</div>
+                    </td>
+                    <td colspan="4">
+                        <button onclick="decreaseCount('num-aldult')">-</button>
+                        <button onclick="increaseCount('num-aldult')">+</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p class="num-kids">0</p>
+                    </td>
+                    <td width="60%">
+                        <div>Người lớn</div>
+                        <div class="text-detail-people">(Từ 12 tuổi)</div>
+                    </td>
+                    <td colspan="4">
+                        <button onclick="decreaseCount('num-kids')">-</button>
+                        <button onclick="increaseCount('num-kids')">+</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p class="num-baby">0</p>
+                    </td>
+                    <td width="60%">
+                        <div>Người lớn</div>
+                        <div class="text-detail-people">(Từ 12 tuổi)</div>
+                    </td>
+                    <td colspan="4">
+                        <button onclick="decreaseCount('num-baby')">-</button>
+                        <button onclick="increaseCount('num-baby')">+</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    var isSetBtnOption = false;
+
+    function showOption() {
+
+        if (!isSetBtnOption) {
+            document.getElementById('dropdown-id').style.display = 'block';
+            isSetBtnOption = true;
+        } else {
+            document.getElementById('dropdown-id').style.display = 'none';
+            isSetBtnOption = false;
+        }
+
+
+    }
+
+    function increaseCount(classname) {
+        var currentNumOfPeople = document.getElementsByClassName(classname);
+        for (var i = 0; i < currentNumOfPeople.length; i++) {
+            currentNumOfPeople[i].innerText++;
+        }
+        computeTotalPeople('total-people', 'in');
+
+        //document.getElementsByClassName(classname).innerText = currentNumOfPeople;
+    }
+
+    function decreaseCount(classname) {
+        var currentNumOfPeople = document.getElementsByClassName(classname);
+        var isDecrease = false;
+        for (var i = 0; i < currentNumOfPeople.length; i++) {
+            if (classname === 'num-aldult' && currentNumOfPeople[i].innerText <= 1) break;
+            if (currentNumOfPeople[i].innerText > 0) {
+                currentNumOfPeople[i].innerText--;
+                isDecrease = true;
+            }
+        }
+        if (isDecrease) computeTotalPeople('total-people', 'de');
+    }
+
+    function computeTotalPeople(classname, operator) {
+        var total = document.getElementsByClassName(classname);
+        if (operator === 'in') total[0].innerText++;
+        else if (operator === 'de') total[0].innerText--;
+    }
+</script>
+
+</html>
