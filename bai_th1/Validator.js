@@ -101,9 +101,23 @@ function Validator(options) {
 
                         switch (input.type) {
                             case 'radio':
-                            case 'checkbox':
                                 if (input.matches(':checked'))
                                     values[input.name] = input.value;
+                                break;
+
+                            case 'checkbox':
+
+                                if (!input.matches(':checked')) {
+                                    return values;
+                                }
+                                if (!Array.isArray(values[input.name])) {
+                                    values[input.name] = [];
+                                };
+                                values[input.name].push(input.value);
+
+                                break;
+                            case 'file':
+                                values[input.name] = input.files;
                                 break;
                             default:
                                 values[input.name] = input.value;

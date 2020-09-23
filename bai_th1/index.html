@@ -40,21 +40,6 @@
                 <span class="form-message"></span>
             </div>
 
-            <div class="form-group">
-                <label for="password_confirmation" class="form-label">Giới tính</label>
-
-                <div>
-                    <input name="gender" type="radio" value="male" class="form-control"> Nam
-                </div>
-                <div>
-                    <input name="gender" type="radio" value="female" class="form-control"> Nữ
-                </div>
-                <div>
-                    <input name="gender" type="radio" value="other" class="form-control"> Khác
-                </div>
-                <span class="form-message"></span>
-            </div>
-
             <button class="form-submit">Đăng ký</button>
         </form>
 
@@ -77,7 +62,6 @@
             Validator.isConfirmed('#password_confirmation', function() {
                 return document.querySelector("#form-1 #password").value;
             }, 'Mật khẩu nhập lại không chính xác!'),
-            Validator.isRequired('input[name="gender"]'),
         ],
         onSubmit: function(data) {
             console.log(data);
