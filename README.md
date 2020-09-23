@@ -119,6 +119,7 @@ document.(function):
     + getElementByTagName('p'): tag = 'p'
     + CSS selector: querySelector('.healding'): chọn theo id css
                     querySelectorAll('.healding'):
+    VD: input['name="name"']
     + HTML selection: chỉ lấy được 1 số thẻ(a, p, form, ...)
                     forms['id-form'] or forms.form;
     + [element].innerText: trình duyệt có gì thì hiển thị đó.
