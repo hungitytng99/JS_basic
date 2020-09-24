@@ -139,7 +139,10 @@ document.(function):
 - preventDefault()  ngăn sự kiện mặc định.
 - stopPropagation() ngăn nổi bọt(hành vi cha ảnh hưởng hành vi thẻ con).
 
-
+#JSON:
+- Định dạng dữ liệu (chuỗi).
+- Stringify: JS types -> JSON
+- parse: JSON -> JS types 
 
 ** Lưu ý:
 1.  result = A && B && C;
